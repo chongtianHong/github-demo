@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app="myapp">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>AngularJs备忘录应用</title>
+		<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	</head>
+	<body ng-controller="myCtrl">
+		<h2>我的备忘录</h2>
+		<form ng-submit="todoAdd()">
+			<input type="text" ng-model="todoInput" size="50" placeholder="新增"/>
+			<input type="submit" value="新增"/>
+		</form>
+
+		<br/>
+
+		<div ng-repeat="x in todoList">
+			<input type="checkbox" ng-model="x.done"> <span ng-bind="x.todoText"></span>
+		</div>
+
+		<p><button ng-click="remove()">删除记录</button></p>
+		
+		<script>
+			var app=angular.module("myapp",[]);
+			app.controller("myCtrl",function($scope){
+				$scope.todoList=[{todoText:'Clean House',done:false}];
+				
+				$scope.todoAdd=function(){
+					$scope.todoList.push({todoText:$scope.todoInput,done:false});
+					$scope.todoInput="";
+				};
+
+				$scope.remove=function(){
+					var oldList=$scope.todoList;
+					$scope.todoList=[];
+					angular.forEach(oldList,function(x){//使用forEach遍历某个数组,x表示遍历时的每个元素
+						if (!x.done)
+						{
+							$scope.todoList.push(x);
+						}
+					});
+				};
+			});
+		</script>
+	</body>
+</html>
