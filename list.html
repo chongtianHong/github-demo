@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>任务六：基础JavaScript练习（三）</title>
+		<!--
+			项目描述:js实现队列效果
+			第一部分:有一个文本输入域(textarea)，以及4个操作按钮
+				1.点击"左侧入"，将textarea中输入的内容从左侧插入队列中；
+				2.点击"右侧入"，将textarea中输入的内容从右侧插入队列中；
+				3.点击"左侧出"，读取并删除队列左侧第一个元素；
+				4.点击"右侧出"，读取并删除队列右侧第一个元素；
+				5.当点击队列中任何一个元素，则该元素会被从队列中删除
+			第二部分:有一个查询文本输入框(text),以及一个查询按钮
+				当点击查询时，将查询词在各个元素内容中做模糊匹配，将匹配到包含对应内容的元素进行特殊标识。		
+		-->
+		<link type="text/css" href="css/list.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="container">
+			<textarea id="content"></textarea>
+			<input type="button" value="左侧入" onclick="insertFromLeft()"/>
+			<input type="button" value="右侧入" onclick="insertFromRight()"/>
+			<input type="button" value="左侧出" onclick="removeFromLeft()"/>
+			<input type="button" value="右侧出" onclick="removeFromRight()"/>
+			<ul id="list">
+				<li class="thisNode">10</li>
+				<li class="thisNode">3</li>
+				<li class="thisNode">7</li>
+				<li class="thisNode">12</li>
+				<li class="thisNode">11</li>
+				<li class="thisNode">13</li>
+			</ul>
+			<input type="text" placeholder="请输入要查询的内容" id="key"/>
+			<input type="button" value="查询" onclick="queryFun()"/>
+		</div>
+		<script type="text/javascript" src="js/list.js"></script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>计算器-JS</title>
+		<!--
+			项目描述:js开发计算器
+				实现了一个简单的标准计算器,能进行加减乘除连续运算,以及求余运算.
+				如果发生除数为0的情况,会给出错误提示.
+		-->
+		<link type="text/css" href="css/calculator.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="cac">
+			<div class="c_title">计算器</div>
+			<div class="c_show">
+				<input type="text" class="c_text" value="0" onfocus="this.blur();" id="result"/>
+				<!--onfocus="this.blur();"作用是使键盘无法输入-->
+			</div>
+			<div class="c_key">
+				<ul>
+					<!--每个按钮都要添加onclick点击事件,不然按钮不能用-->
+					<li onclick="command(7);">7</li>
+					<li onclick="command(8);">8</li>
+					<li onclick="command(9);">9</li>
+					<li class="c_tool" onclick="del();"><-</li>
+					<li class="c_tool" onclick="clearzero();">C</li>
+					<li onclick="command(4);">4</li>
+					<li onclick="command(5);">5</li>
+					<li onclick="command(6);">6</li>
+					<li class="c_tool" onclick="tools('*');">×</li>
+					<li class="c_tool" onclick="tools('/');">÷</li>
+					<li onclick="command(1);">1</li>
+					<li onclick="command(2);">2</li>
+					<li onclick="command(3);">3</li>
+					<li class="c_tool" onclick="tools('+');">+</li>
+					<li class="c_tool" onclick="tools('-');">-</li>
+					<li onclick="command(0);">0</li>
+					<li onclick="command(00);">00</li>
+					<li onclick="dot('g');">.</li>
+					<li class="c_tool" onclick="tools('%');">%</li>
+					<li class="c_equ" onclick="equal();">=</li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/calculator.js"></script>
+	</body>
+</html>

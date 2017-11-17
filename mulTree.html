@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>多叉树可视化实现</title>
+		<!--
+			项目描述:在页面中展示多叉树的结构,每个节点都带有内容.
+				1.当点击"深度优先遍历"按钮,动画显示 深度优先遍历 多叉树过程;
+				2.当点击"广度优先遍历"按钮,动画显示 广度优先遍历 多叉树过程;
+				3.当在文本框中输入要查询节点的内容,点击"深度/广度优先查询"按钮,进行不同方法的查询动画显示,当节点内容与查询文本匹配时,节点背景颜色显示为粉红色,查询完成后,查询到对应元素则弹窗显示;
+				4.点击某个节点元素,则该节点元素呈现一个特殊被选中的样式(背景颜色变为橘黄色),双击取消选中;
+				5.选中元素后,当点击"删除节点"按钮时,将该节点及其所有子节点删除掉;
+				6.选中元素后,在文本框输入内容,当点击"增加节点"按钮时,则在该节点下增加一个子节点,节点内容为输入框中内容,插入在其子节点的最后一个位置.
+		-->
+		<link type="text/css" href="css/mulTree.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container"><!--大盒子包裹多叉树,不然广度搜索root.nextElementSibling会把按钮部分的div算进去-->
+			<div class="BST" id="root">
+			Apple<!--文本要放在最前面,否则,若文本放在div最后,使用firstChild.nodeValue有可能只获取到空格-->
+				<div class="second">Div
+					<div class="third">Link
+						<div class="forth">Head</div>
+						<div class="forth">Div</div>
+						<div class="forth">Class</div>
+					</div>
+					<div class="third">Ball
+						<div class="forth">Word</div>
+						<div class="forth">Real</div>
+					</div>
+					<div class="third">Hen
+						<div class="forth">Football</div>
+					</div>
+				</div>
+				<div class="second">Title
+					<div class="third">Cat
+						<div class="forth">Banana</div>
+						<div class="forth">Orange</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="control">
+			<input type="button" value="深度优先遍历" id="preOrder">
+			<input type="button" value="广度优先遍历" id="traverseBf">
+			<input type="text" placeholder="请输入要搜索的文本" id="searchBox">
+			<input type="button" value="深度优先查询" id="preOrderSearch"/>
+			<input type="button" value="广度优先查询" id="traverseBfSearch"/>
+			<br/>
+			<input type="button" value="增加节点" id="addNode"/>
+			<input type="text" placeholder="请输入要插入节点的内容" id="inputBox">
+			<input type="button" value="删除节点" id="removeNode"/>
+		</div>
+		<script type="text/javascript" src="js/mulTree.js"></script>
+	</body>
+</html>
