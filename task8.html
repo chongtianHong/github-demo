@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>响应式网格(栅格化)布局</title>
+		<!--
+			项目描述:使用HTML与CSS实现类似BOOTSTRAP的响应式12栏网格布局,根据屏幕宽度,元素占的栏数不同.
+			
+			利用@media screen实现网页布局的自适应
+				注意顺序:用min-width(>=min-width)的设备时:小的放上面大的在下面
+				同理如果是用max-width(<=min-width):大的在上面，小的在下面
+		-->
+		<link rel="stylesheet" href="css/task8.css">
+	</head>
+	<body>
+		<div id="container">	
+				<div class="col-md-4 col-sm-6"><div class="content">四栏->六栏</div></div>
+				<div class="col-md-4 col-sm-6"><div class="content">四栏->六栏</div></div>
+				<div class="col-md-4 col-sm-12"><div class="content">四栏->十二栏</div></div>
+			
+				<div class="col-md-3 col-sm-3"><div class="content">三栏</div></div>
+				<div class="col-md-6 col-sm-6"><div class="content">六栏</div></div>
+				<div class="col-md-3 col-sm-3"><div class="content">三栏</div></div>
+			
+				<div class="col-md-1 col-sm-2"><div class="content">一栏->两栏</div></div>
+				<div class="col-md-1 col-sm-2"><div class="content">一栏->两栏</div></div>
+				<div class="col-md-2 col-sm-8"><div class="content">两栏->八栏</div></div>
+				<div class="col-md-2 col-sm-3"><div class="content">两栏->三栏</div></div>
+				<div class="col-md-6 col-sm-3"><div class="content">六栏->三栏</div></div>
+		</div>
+	</body>
+</html>

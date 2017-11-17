@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>实现常见的技术产品官网的页面架构及样式布局(二)</title>
+		<!--
+			在没有标注的情况下实现设计稿到页面的精确转变
+
+				设计稿是有一定宽度的,这个宽度为页面的最小宽度.
+					当浏览器窗口小于设计稿宽度时,允许出现横向滚动条,页面内容宽度保持不变
+					当浏览器窗口大于设计稿宽度时,页面部分内容的宽度应该保持和浏览器窗口宽度一致.
+						方法:给body设置min-width
+		-->
+		<link rel="stylesheet" href="css/task7.css">
+	</head>
+	<body>
+		<!--大盒子存放所有内容-->
+		<div id="container">
+			<div class="header">
+				<div class="pic">
+					<img src="images_t7/site-pic.png"/>
+					<span>新世界</span>
+				</div>
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">最新活动</a></li>
+					<li><a href="#">项目介绍</a></li>
+					<li><a href="#">爱心社区</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#"><img src="images_t7/login-icon.jpg"/> 登录</a></li>
+				</ul>
+			</div>
+			<div class="part1">
+				<div class="text">
+					<p class="t1">Time of new life</p>
+					<p class="t2">新时代,年轻的人们让我们一起</p>
+					<p class="t2">Time of new life</p>
+					<p class="t3">开始体验</p>
+				</div>
+				<div class="mask"></div><!--遮罩层-->
+				<img src="images_t7/mission7_navhead.png"/>
+			</div>
+			<div class="part2">
+				<ul>
+					<li>
+						<img src="images_t7/icon-1.jpg"/>
+						<p>打造全新世界观,让你更爱你的生活</p>
+					</li>
+					<li>
+						<img src="images_t7/icon-2.jpg"/>
+						<p>丰富多彩的公益活动,发挥新世界的主人公意识</p>
+					</li>
+					<li>
+						<img src="images_t7/icon-3.jpg"/>
+						<p>时尚的新理念,超前体验未知的生活</p>
+					</li>
+					<li>
+						<img src="images_t7/icon-4.jpg"/>
+						<p>完善的培养机制,培养你全新的世界观</p>
+					</li>
+				</ul>
+			</div>
+			<div class="part3">
+				<img src="images_t7/site-pic2.png"/>
+				<p>关于新世界, 你不知道的还有什么?</p>
+			</div>
+			<div class="part4">
+				<img src="images_t7/map.png"/>
+				<div class="mask"></div><!--遮罩层-->
+				<div class="content">
+					<p class="tx1">寻找新世界城市活动信息</p>
+					<div class="underline"></div><!--下划线-->
+					<p class="tx2">每个城市都有不同的活动信息,请自主查询您所需要了解的城市</p>
+					<select>
+						<option selected>国家</option>
+						<option>中国</option>
+					</select>
+					<select>
+						<option selected>省份</option>
+						<option>广东</option>
+						<option>北京</option>
+						<option>上海</option>
+					</select>
+					<select>
+						<option selected>城市</option>
+						<option>广州</option>
+						<option>珠海</option>
+						<option>深圳</option>
+					</select>
+					<input type="button" value="搜   索"/>
+				</div> 
+			</div>
+			<div class="part5">
+				<ul>
+					<li>
+						<img src="images_t7/activity1.jpg"/>
+						<p>北京活动</p>
+						<p class="tx2">新社区大联盟</p>
+					</li>
+					<li>
+						<p>上海活动</p>
+						<p class="tx2">夜上海新景观探索</p>
+						<img src="images_t7/activity2.jpg"/>
+					</li>
+					<li>
+						<img src="images_t7/activity3.jpg"/>
+						<p>深圳活动</p>
+						<p class="tx2">全新海岸线观点站</p>
+					</li>
+					<li>
+						<p>香港活动</p>
+						<p class="tx2">奢侈消费大派送</p>
+						<img src="images_t7/activity2.jpg"/>
+					</li>
+				</ul>
+			</div>
+			<div class="part6">
+				<div class="content-left">
+					<img class="triangle" src="images_t7/jian.png"/>
+					<div class="words">
+						<p class="tx1">新世界</p>
+						<p class="tx2">TIME</p>
+						<span class="tx3">@新世界 - 北京<br/>2016.04.01</span>
+					</div>
+				</div>
+				<div class="content-right">
+					<div class="words">
+						<h1>新世界/<span>01</span></h1>
+						<p style="text-align:left;">
+							新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界
+						</p>
+						<input type="button" value="更多详情"/></br>
+						<span class="circle" style="background:#aaaaa9;"></span>
+						<span class="circle"></span>
+						<span class="circle"></span>
+					</div>
+				</div>
+			</div>
+			<div class="part7">
+				<ul>
+					<li class="first">
+						<div class="content">
+							<p>新时代</p>
+							<p>关于爱生活的我们</p>
+							<div class="underline"></div><!--下划线-->
+							<input type="button" value="查看更多"/>
+						</div>
+					</li>
+					<li class="second">
+						<div class="content">
+							<p>新时代</p>
+							<p>关于爱生活的我们</p>
+							<div class="underline"></div><!--下划线-->
+							<input type="button" value="查看更多"/>
+						</div>
+					</li>
+					<li class="third">
+						<img class="triangle" src="images_t7/jian2.png"/>
+					</li>
+				</ul>
+			</div>
+			<div class="part8">
+				<div class="title">
+					<h3>成为我们的志愿者</h3>
+					<div class="underline"></div><!--下划线-->
+					<p>新世界的大家庭需要每一个爱生活的人的加入,如果你够年轻,有梦想,有激情</p>
+					<p>那就不要犹豫,快来加入我们,成为改变所有人生活的人</p>
+				</div>
+				<div class="content">
+					<div class="content-left">
+						<div class="words">
+							<h3>新世界志愿者协议</h3>
+							<p>加入新世界志愿者的人员必须遵守中华人民共和国的相关法律法规,并本着平等自愿的原则......</p>
+							<a href="#">∨ more</a>
+						</div>
+						<div class="words">
+							<h3>新世界志愿者权利</h3>
+							<p>新世界志愿者享受世界内部所有资源共享的权利,并且享受所在新世界活动的优先参与资格</p>
+							<a href="#">∨ more</a>
+						</div>
+						<div class="words">
+							<h3>更多条款</h3>
+							<a href="#">∨ more</a>
+						</div>
+					</div>
+					<div class="content-right">
+						<form>
+							<input class="txt" type="text" placeholder="姓名:"/>
+							<input class="txt" type="text" placeholder="年龄:"/>
+							<input class="txt" type="text" placeholder="联系方式:"/>
+							<input class="txt" type="text" placeholder="地址:"/>
+							<textarea type="text" rows="5" placeholder="请简单描述您梦想的生活:"/></textarea>
+							<input class="submit" type="submit" value="提交申请"/>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="content">
+					<h3>联系我们</h3>
+					<p>为了更好的获取我们最新的产品咨询,您可以留下您的电子邮件快速订阅我们的产品咨询</p>
+					<p>也可以通过以下任何方式关注我们的动态</p>
+					<form>
+						<input class="txt" type="text" placeholder="someone@email.com"/>
+						<input class="submit" type="submit" value="提  交">
+					</form>
+					<div class="pic">
+						<img src="images_t7/qq.gif"/>
+						<img src="images_t7/weibo.gif">
+						<img src="images_t7/tuite.gif">
+						<img src="images_t7/global.gif">
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="txt">
+						<span>@2016新世界</span>
+						<a href="#">Back to top</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
