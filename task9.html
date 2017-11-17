@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>任务九：基础JavaScript练习（三）</title>
+		<!--
+			任务目的:熟练JavaScript&学习树这种数据结构的基本知识
+			
+			任务描述:基于任务八,添加节点的选择,增加与删除的功能
+
+				1.点击某个节点元素,则该节点元素呈现一个特殊被选中的样式
+				2.增加一个删除按钮,当选中某个节点元素后,点击删除按钮,则将该节点及其所有子节点删除掉
+				3.增加一个输入框及一个"添加"按钮
+					当点击添加按钮,则在该节点下增加一个子节点,节点内容为输入框中内容,插入在其子节点的最后一个位置
+		-->
+		<style>
+			*{
+				padding:0;
+				margin:0;
+			}
+			.BST{/*只有根节点需要设置高度宽度,子节点的高度宽度随着盒子内容的增加而自适应变化*/
+				width:1200px;
+				height:80%;
+				padding:50px 10px;/*盒子内边距*/
+				margin:20px auto;
+				border:2px solid #3366ff;
+				background:#fff;
+				color:#000;
+				display:flex;
+				justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+				align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+				flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+			}
+			.second{
+				padding:50px 5px;/*盒子内边距*/
+				/*height:75%;*/
+				border:1px solid #3366ff;
+				color:#000;
+				margin:10px;/*盒子之间保持一定的距离*/
+				background:#fff;
+				display:flex;
+				justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+				align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+				flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+			}
+			.third{
+				padding:50px 5px;/*盒子内边距*/
+				/*height:75%;*/
+				border:1px solid #3366ff;
+				margin:10px;/*盒子之间保持一定的距离*/
+				background:#fff;
+				color:#000;
+				display:flex;
+				justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+				align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+				flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+			}
+			.forth{
+				padding:50px 5px;/*盒子内边距*/
+				/*height:75%;*/
+				border:1px solid #3366ff;
+				color:#000;
+				margin:10px;/*盒子之间保持一定的距离*/
+				background:#fff;
+				display:flex;
+				justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+				align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+				flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+			}
+			.newElement{
+				padding:50px 5px;/*盒子内边距*/
+				/*height:75%;*/
+				border:1px solid #3366ff;
+				color:#000;
+				margin:10px;/*盒子之间保持一定的距离*/
+				background:#fff;
+				display:flex;
+				justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+				align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+				flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+			}
+			.control{
+				text-align:center;
+				color:#000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container"><!--大盒子包裹多叉树,不然广度搜索root.nextElementSibling会把按钮部分的div算进去-->
+			<div class="BST" id="root">
+			Apple<!--文本要放在最前面,否则,若文本放在div最后,使用firstChild.nodeValue有可能只获取到空格-->
+				<div class="second">Div
+					<div class="third">Link
+						<div class="forth">Head</div>
+						<div class="forth">Div</div>
+						<div class="forth">Class</div>
+					</div>
+					<div class="third">Ball
+						<div class="forth">Word</div>
+						<div class="forth">Real</div>
+					</div>
+					<div class="third">Hen
+						<div class="forth">Football</div>
+					</div>
+				</div>
+				<div class="second">Title
+					<div class="third">Cat
+						<div class="forth">Banana</div>
+						<div class="forth">Orange</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="control">
+			<input type="button" value="深度优先遍历" id="preOrder">
+			<input type="button" value="广度优先遍历" id="traverseBf"><br/>
+			<input type="button" value="增加节点" id="addNode"/>
+			<input type="text" placeholder="请输入要插入节点的内容" id="inputBox">
+			<input type="button" value="删除节点" id="removeNode"/>
+		</div>
+		<script>
+			var add=document.getElementById("addNode");//增加节点按钮
+			var remove=document.getElementById("removeNode");//删除节点按钮
+			var oTraverseBf=document.getElementById("traverseBf");//广度优先遍历按钮
+			var oPreOrder=document.getElementById("preOrder");//深度优先遍历按钮
+			var root=document.getElementById("root");//根节点
+			var arr=[];//存储遍历结果的数组
+			var index=0;//树的深度
+			var timer=null;//定时器
+			var targetNode=null;//被选中的节点
+			function preOrder(root){//深度优先遍历
+				if(root){
+					arr.push(root);
+					for(var i=0;i<root.children.length;i++){
+						preOrder(root.children[i]);
+					}
+				}
+			}
+			function traverseBf(root){//广度优先遍历
+				if(root){
+					arr.push(root);
+					traverseBf(root.nextElementSibling);
+					root=arr[index++];
+					traverseBf(root.firstElementChild);
+				}
+			}
+			function show(){//显示部分
+				var i=0;
+				arr[i].style.background="pink";
+				timer=setInterval(function(){
+					i++;
+					if(i<arr.length){
+						arr[i].style.background="pink";
+						arr[i-1].style.background="#fff";
+					}else{
+						clearInterval(timer);
+						arr[i-1].style.background="#fff";
+						alert("遍历结束");
+					}
+				},500);
+			}
+			function reset(){//重置部分
+				clearInterval(timer);
+				arr=[];
+				index=0;
+				var divs=document.getElementsByTagName("div");
+				for(var i=1;i<divs.length-1;i++){
+					divs[i].style.background="#fff";
+				}
+			}
+			function addClickEvent(){//为每个节点绑定点击事件
+				reset();//重置
+				preOrder(root);
+				//为每一个node添加onclick事件
+				arr.forEach(function(node){//如果使用for则会出现js闭包的错误,下标i永远是arr.length-1
+					node.onclick=function(event){//用onclick替代addEventListener
+					if(!targetNode){
+						targetNode = this;
+						this.style.backgroundColor = "orange";
+						arr.forEach(function(n){
+							if (n != node){//没选中的背景颜色为白色
+								n.style.backgroundColor = "#fff";
+							}
+						});
+					}else{//双击不选中,背景颜色恢复为白色
+						targetNode.style.backgroundColor = "#fff";
+						targetNode = null;
+					}
+					/*
+						也可以给当前被选择的节点增加class样式属性 例如 addClass(this,"class名")
+						每个节点被点击(onclick)则进行一次重置,在reset()里面增加clearClass("class名")//重置className还原样式
+					*/
+					event.stopPropagation();//防止事件冒泡
+					}
+				});
+			}
+			
+			function addNode(){//增加节点
+				if(targetNode){
+					var value=document.getElementById("inputBox").value;//获取文本输入框的值
+					if(value!==""){
+						var newDiv=document.createElement("div");//创建一个div,内容为用户输入的值
+						if(targetNode.children[0]){//如果选中的节点存在子节点
+							newDiv.className=targetNode.children[0].className;
+						}else{
+							newDiv.className="newElement";
+						}
+						newDiv.innerHTML=value;
+						targetNode.appendChild(newDiv);
+						addClickEvent();//重新为每个节点绑定点击事件
+					}else{//若文本框的值为空
+						alert("请输入要插入节点的内容")
+					}
+				}else{
+					alert("请先选中元素");
+				}
+			}
+			function removeNode(){//删除选中节点
+				if(targetNode){
+					targetNode.parentNode.removeChild(targetNode);
+					targetNode=null;
+					addClickEvent();//重新为每个节点绑定点击事件
+				}else{
+					alert("请先选中元素");
+				}
+			}
+			addClickEvent();//执行为每个节点绑定点击事件的函数
+			oPreOrder.addEventListener("click",function(){//为深度优先遍历按钮绑定点击事件
+				reset();
+				preOrder(root);
+				show();
+			});
+			oTraverseBf.addEventListener("click",function(){//为广度优先遍历按钮绑定点击事件
+				reset();
+				traverseBf(root);
+				show();
+			});
+			add.addEventListener("click",function(){//为增加节点按钮绑定点击事件
+				addNode();
+			});
+			remove.addEventListener("click",function(){//为删除节点按钮绑定点击事件
+				removeNode();
+			});
+		</script>
+	</body>
+</html>
+		<!--
+			addEventListener("click",function(){},[true/false])
+				true捕获
+				false冒泡
+				先捕获,后冒泡
+			通过addEventListener()方法为对象绑定的事件分为两种类型：冒泡和捕获，这是由函数的第三个参数决定的，默认为冒泡类型(false)。
+			为false时表示冒泡类型，为true时表示捕获类型。
+			某个元素触发了某个事件，最先得到通知的是window，然后是document，依次而入，直到真正触发事件的那个元素(目标元素)为止，这个过程就是捕获。接下来，事件会从目标元素开始起泡，再依次而出，直到window对象为止，这个过程就是冒泡。
+				总结： 
+					如果一个dom上只绑定了一个方式（冒泡或是捕获），那么点击内部的dom，会先触发外部的捕获事件，其次是被点击dom的事件（冒泡或捕获），点击最外层的dom则只触发该层的dom事件；如果一个dom上同时绑定两种方式的事件，那么点击该dom会先触发外层的捕获事件（如果没有，则先触发本层的冒泡事件，然后才是本层的捕获事件，最后才是外层的冒泡事件），点击在没有绑定两种方式的dom（绑定两种方式的dom处在内存）上，则先触发外层的捕获事件（如果没有则直接执行本层事件）
+
+			forEach是ES5中操作数组的一种方法，主要功能是遍历数组
+				var arr = [1,2,3,4];
+				arr.forEach(alert);
+			等价于
+				var arr = [1, 2, 3, 4];
+				for (var k = 0, length = arr.length; k < length; k++) {
+					alert(array[k]);
+				}
+			
+			JS实现循环给元素绑定事件要采用foreach,若采用for,则会出错.
+
+			event.stopPropagation();//该方法将停止事件的传播，阻止它被分派到其他 Document 节点。在事件传播的任何阶段都可以调用它。注意，虽然该方法不能阻止同一个 Document 节点上的其他事件句柄被调用，但是它可以阻止把事件分派到其他节点。
+		-->
