@@ -13,13 +13,10 @@ function insertFromLeft(){
 		}else{
 			oList.appendChild(oLi);//将创建的li添加到ul尾部
 		}
-		document.getElementById("content").value="";//清空文本框的值
-		var nodeNum=document.getElementsByClassName("thisNode");
-		for(var i=0;i<nodeNum.length;i++){
-				nodeNum[i].onclick=function(){
-				this.parentNode.removeChild(this);
-			};
+		oLi.onclick=function(){//为增加的节点增加点击事件
+			oList.removeChild(this);
 		}
+		document.getElementById("content").value="";//清空文本框的值
 	}
 }
 
@@ -34,13 +31,11 @@ function insertFromRight(){
 		oLi.innerHTML=text;
 		oLi.setAttribute("class","thisNode");//为节点增加class属性
 		oList.appendChild(oLi);//将创建的li添加到ul尾部
+		oLi.onclick=function(){//为增加的节点增加点击事件
+			oList.removeChild(this);
+		}
 		document.getElementById("content").value="";//清空文本框的值
 		var nodeNum=document.getElementsByClassName("thisNode");
-		for(var i=0;i<nodeNum.length;i++){
-			nodeNum[i].onclick=function(){
-				this.parentNode.removeChild(this);
-			};
-		}
 	}
 }
 
