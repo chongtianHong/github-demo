@@ -75,6 +75,8 @@ function queryFun(){
 	for(var i=0;i<nodeNum.length;i++){
 		nodeNum[i].style.background="red";//下一项查询之前恢复初始背景色
 		nodeNum[i].style.color="#fff";//下一项查询之前恢复初始背景色
+		reg.lastIndex=0;//test从第0个位置开始匹配
+		//RegExp.test()方法，第一次从位置0开始查找，可以匹配；第二次的查找位置不是0，不能匹配了
 		if(reg.test(nodeNum[i].innerHTML)){
 			nodeNum[i].style.background="#fff";
 			nodeNum[i].style.color="#f00";
