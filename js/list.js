@@ -35,7 +35,6 @@ function insertFromRight(){
 			oList.removeChild(this);
 		}
 		document.getElementById("content").value="";//清空文本框的值
-		var nodeNum=document.getElementsByClassName("thisNode");
 	}
 }
 
