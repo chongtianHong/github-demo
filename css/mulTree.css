@@ -1,0 +1,81 @@
+*{
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+	outline:none;
+}
+.BST{/*只有根节点需要设置高度宽度,子节点的高度宽度随着盒子内容的增加而自适应变化*/
+	width:1200px;
+	height:80%;
+	padding:50px 10px;/*盒子内边距*/
+	margin:20px auto;
+	border:2px solid #3366ff;
+	background:#fff;
+	color:#000;
+	display:flex;
+	justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+	align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+	flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+}
+.second{
+	padding:50px 5px;/*盒子内边距*/
+	border:1px solid #3366ff;
+	color:#000;
+	margin:10px;/*盒子之间保持一定的距离*/
+	background:#fff;
+	display:flex;
+	justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+	align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+	flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+}
+.third{
+	padding:50px 5px;/*盒子内边距*/
+	border:1px solid #3366ff;
+	margin:10px;/*盒子之间保持一定的距离*/
+	background:#fff;
+	color:#000;
+	display:flex;
+	justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+	align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+	flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+}
+.forth{
+	padding:50px 5px;/*盒子内边距*/
+	border:1px solid #3366ff;
+	color:#000;
+	margin:10px;/*盒子之间保持一定的距离*/
+	background:#fff;
+	display:flex;
+	justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+	align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+	flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+}
+.newElement{
+	padding:50px 5px;/*盒子内边距*/
+	border:1px solid #3366ff;
+	color:#000;
+	margin:10px;/*盒子之间保持一定的距离*/
+	background:#fff;
+	display:flex;
+	justify-content:space-around;/*主轴:伸缩项目会平均地分布在行里,两端保留一半的空间*/
+	align-items:center;/*侧轴:伸缩项目的外边距盒在该行的侧轴上居中放置*/
+	flex-wrap:wrap;/*伸缩容器多行显示(宽度超出则过行)*/
+}
+.control{
+	text-align:center;
+	color:#000;
+}
+.control input[type="button"]{
+	width:100px;
+	height:30px;
+	margin:10px 40px;
+	background:#69f;
+	border:1px solid #69f;
+	border-radius:10px;
+	color:#fff;
+}
+.control input[type="text"]{
+	width:180px;
+	height:20px;
+	padding-left:5px;
+}
